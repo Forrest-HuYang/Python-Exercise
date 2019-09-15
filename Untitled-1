@@ -1,0 +1,7 @@
+import easygui
+shit = easygui.buttonbox("ssfdjs" , choices = ["i","jk","l"])
+
+
+
+
+

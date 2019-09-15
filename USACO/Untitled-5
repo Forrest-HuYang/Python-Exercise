@@ -1,0 +1,2 @@
+fout = open('陈硕'，‘w’)
+fout.write(strout)

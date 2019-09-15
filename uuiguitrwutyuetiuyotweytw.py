@@ -1,0 +1,7 @@
+a = float(input("1 is:"))
+b = float(input("2 is:"))
+c = float(input("3 is:"))
+x1 = (-b+(b**2-4*a*c)**0.5)/(2*a)
+x2 = (-b-(b**2-4*a*c)**0.5)/(2*a)
+print ("x1 is", x1)
+print ("x2 is", x2)
