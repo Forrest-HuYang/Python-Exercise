@@ -90,7 +90,7 @@ def draw_eu():
     #m = Basemap(llcrnrlon=-7, llcrnrlat = 32, urcrnrlon=50, urcrnrlat=57, projection= 'lcc' , lat_0 = 46, lon_0=15)
     m.arcgisimage()
     for i in range(len(countries)):
-        m.readshapefile('/Users/tony/MyWork/python/gadm36_eur_shp/gadm36_' + countries[i] + '_shp/gadm36_' + countries[i] + '_0', 'states', drawbounds=True)
+        m.readshapefile('/Users/tony/MyWork/Python-Exercise/gadm36_eur_shp/gadm36_' + countries[i] + '_shp/gadm36_' + countries[i] + '_0', 'states', drawbounds=True)
 
     #m.readshapefile('/Users/tony/MyWork/python/gadm36_IND_shp/gadm36_IND_0', 'states', drawbounds=True)
     #m.readshapefile('/Users/tony/MyWork/python/gadm36_levels_shp/gadm36_0', 'states', drawbounds=True)
