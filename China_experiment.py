@@ -1,6 +1,6 @@
 from example.commons import Faker
 from pyecharts import options as opts
-from pyecharts.charts import Geo,Map
+from pyecharts.charts import Geo,Map,Line
 from pyecharts.globals import ChartType, SymbolType
 import json
 import requests
@@ -10,50 +10,70 @@ def get_data():
     mydata = json.loads(requests.get(url=url).json()['data'])
     return mydata
 
-
-def get_individual_cities():
-    global max_num
-    global cities_data
-    global province_data
-    for province in province_data:
-        name = province['name']
-        city_data = province['children']
-        confirm = 0
-        dead = 0
-        heal = 0
-        for city in city_data:
-            data = city['total']
-            confirm += data['confirm']
-            dead += data['dead']
-            heal += data['heal']
-        if name == '浙江':
-            max_num = confirm
-        mydata.append([name,confirm])
-
      
 
 virus_data = get_data()
+china_daily = virus_data['chinaDayList']
+china_add = virus_data['chinaDayAddList']
+dates = []
+dates_add = []
+dead_add = []
+heal_add = []
+num_confirmed = []
+num_add = [0,0,0,4,17,136]
+percentage_add = []
 
-province_data = virus_data['areaTree'][0]['children']
+for day in china_daily:
+    dates.append(day['date'])
+    num_confirmed.append(int(day['confirm']))
 
-mydata = []
-max_num = 0
-get_individual_cities()
+for day in china_add:
+    dates_add.append(day['date'])
+    num_add.append(int(day['confirm']))
+    dead_add.append(day['dead'])
+    heal_add.append(day['heal'])
+
+for i in range(1,len(num_add)):
+    percentage = round(num_add[i]/num_confirmed[i],2)
+    percentage_add.append(percentage)
+    
 
 
-
-def map_virus() -> Map:
-    global mydata
-    global max_num
+def date_line() -> Line:
     c = (
-        Map()
-        .add("确诊病例", [['福州市',44],['杭州市',100]], '福建')
-        
-        .set_global_opts(
-            title_opts=opts.TitleOpts(title="Map-全国地图"),
-            visualmap_opts=opts.VisualMapOpts(max_=max_num),
-        )
+        Line()
+        .add_xaxis(dates)
+        .add_yaxis("累计确诊病例", num_confirmed)
+        .add_yaxis("新增确诊病例", num_add)
+        .set_global_opts(title_opts=opts.TitleOpts(title="全国确诊数"))
     )
     c.render()
+    return
 
-map_virus()
+def dead_heal() -> Line:
+    c = (
+        Line()
+        .add_xaxis(dates_add)
+        .add_yaxis("新增死亡病例", dead_add)
+        .add_yaxis("新增治愈病例", heal_add)
+        .set_global_opts(title_opts=opts.TitleOpts(title="全国新增死亡/治愈数"))
+    )
+    c.render()
+    return
+
+def percentage_growth() -> Line:
+    c = (
+        Line()
+        .add_xaxis(dates)
+        .add_yaxis("日增长率", percentage_add)
+        .set_global_opts(title_opts=opts.TitleOpts(title="全国病例增长率"))
+    )
+    c.render()
+    return
+
+
+
+
+date_line()
+dead_heal()
+percentage_growth()

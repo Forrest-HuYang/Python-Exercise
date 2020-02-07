@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <title>Awesome-pyecharts</title>
             <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
-        <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/fujian.js"></script>
-        <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/zhejiang.js"></script>
 
 </head>
 <body>
-    <div id="375d49a853214ce6b8ae732fe866024d" style="width:900px; height:500px;"></div>
+    <div id="d0f99bb10d4a44d6a04d8248d86f29e3" style="width:900px; height:500px;"></div>
     <script>
-        var chart_375d49a853214ce6b8ae732fe866024d = echarts.init(
-            document.getElementById('375d49a853214ce6b8ae732fe866024d'), 'white', {renderer: 'canvas'});
-        var option_375d49a853214ce6b8ae732fe866024d = {
+        var chart_d0f99bb10d4a44d6a04d8248d86f29e3 = echarts.init(
+            document.getElementById('d0f99bb10d4a44d6a04d8248d86f29e3'), 'white', {renderer: 'canvas'});
+        var option_d0f99bb10d4a44d6a04d8248d86f29e3 = {
     "color": [
         "#c23531",
         "#2f4554",
@@ -42,54 +40,122 @@
     ],
     "series": [
         {
-            "type": "map",
-            "name": "\u786e\u8bca\u75c5\u4f8b",
+            "type": "line",
+            "name": "\u65e5\u589e\u957f\u7387",
+            "symbolSize": 4,
+            "showSymbol": true,
+            "smooth": false,
+            "step": false,
+            "data": [
+                [
+                    "01.13",
+                    0.0
+                ],
+                [
+                    "01.14",
+                    0.0
+                ],
+                [
+                    "01.15",
+                    0.09
+                ],
+                [
+                    "01.16",
+                    0.27
+                ],
+                [
+                    "01.17",
+                    0.69
+                ],
+                [
+                    "01.18",
+                    0.28
+                ],
+                [
+                    "01.19",
+                    0.51
+                ],
+                [
+                    "01.20",
+                    0.3
+                ],
+                [
+                    "01.21",
+                    0.45
+                ],
+                [
+                    "01.22",
+                    0.53
+                ],
+                [
+                    "01.23",
+                    0.53
+                ],
+                [
+                    "01.24",
+                    0.39
+                ],
+                [
+                    "01.25",
+                    0.65
+                ],
+                [
+                    "01.26",
+                    0.32
+                ],
+                [
+                    "01.27",
+                    0.29
+                ],
+                [
+                    "01.28",
+                    0.26
+                ],
+                [
+                    "01.29",
+                    0.22
+                ],
+                [
+                    "01.30",
+                    0.22
+                ],
+                [
+                    "01.31",
+                    0.2
+                ],
+                [
+                    "02.01",
+                    0.19
+                ],
+                [
+                    "02.02",
+                    0.19
+                ]
+            ],
             "label": {
                 "show": true,
                 "position": "top",
                 "margin": 8,
                 "fontSize": 12
             },
-            "mapType": "\u798f\u5efa",
-            "data": [
-                {
-                    "name": "\u798f\u5dde\u5e02",
-                    "value": 44
-                }
-            ],
-            "roam": true,
-            "zoom": 1,
-            "showLegendSymbol": true
-        },
-        {
-            "type": "map",
-            "name": "\u786e\u8bca\u75c5\u4f8b",
-            "label": {
-                "show": true,
-                "position": "top",
-                "margin": 8,
-                "fontSize": 12
+            "lineStyle": {
+                "width": 1,
+                "opacity": 1,
+                "curveness": 0,
+                "type": "solid"
             },
-            "mapType": "\u6d59\u6c5f",
-            "data": [
-                {
-                    "name": "\u676d\u5dde\u5e02",
-                    "value": 100
-                }
-            ],
-            "roam": true,
-            "zoom": 1,
-            "showLegendSymbol": true
+            "areaStyle": {
+                "opacity": 0
+            }
         }
     ],
     "legend": [
         {
             "data": [
-                "\u786e\u8bca\u75c5\u4f8b",
-                "\u786e\u8bca\u75c5\u4f8b"
+                "\u65e5\u589e\u957f\u7387"
             ],
             "selected": {
-                "\u786e\u8bca\u75c5\u4f8b": true
+                "\u65e5\u589e\u957f\u7387": true
             },
             "show": true
         }
@@ -106,29 +172,82 @@
         },
         "borderWidth": 0
     },
-    "title": [
+    "yAxis": [
         {
-            "text": "Map-\u5168\u56fd\u5730\u56fe"
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
         }
     ],
-    "visualMap": {
-        "type": "continuous",
-        "min": 0,
-        "max": 724,
-        "inRange": {
-            "color": [
-                "#50a3ba",
-                "#eac763",
-                "#d94e5d"
+    "xAxis": [
+        {
+            "show": true,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": [
+                "01.13",
+                "01.14",
+                "01.15",
+                "01.16",
+                "01.17",
+                "01.18",
+                "01.19",
+                "01.20",
+                "01.21",
+                "01.22",
+                "01.23",
+                "01.24",
+                "01.25",
+                "01.26",
+                "01.27",
+                "01.28",
+                "01.29",
+                "01.30",
+                "01.31",
+                "02.01",
+                "02.02",
+                "02.03",
+                "02.04"
             ]
-        },
-        "calculable": true,
-        "splitNumber": 5,
-        "orient": "vertical",
-        "showLabel": true
-    }
+        }
+    ],
+    "title": [
+        {
+            "text": "\u5168\u56fd\u75c5\u4f8b\u589e\u957f\u7387"
+        }
+    ]
 };
-        chart_375d49a853214ce6b8ae732fe866024d.setOption(option_375d49a853214ce6b8ae732fe866024d);
+        chart_d0f99bb10d4a44d6a04d8248d86f29e3.setOption(option_d0f99bb10d4a44d6a04d8248d86f29e3);
     </script>
 </body>
 </html>

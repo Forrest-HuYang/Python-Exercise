@@ -18,6 +18,7 @@ def get_data():
 def get_individual_cities():
     global cities_data
     global province_data
+    global TWN
     for province in province_data:
         name = province['name']
         city_data = province['children']
@@ -36,6 +37,10 @@ def get_individual_cities():
             city_dict['heal'] = heal
             cities_data[name] = city_dict
             cities_names.add(name)
+        elif name == '台湾':
+            TWN = city_data[0]['total']['confirm']
+
+
         else:
             for city in city_data:
                 name = city['name']
@@ -47,13 +52,14 @@ def get_individual_cities():
                 cities_data[name] = city_dict
                 cities_names.add(name)
 
-city_converter = {'万宁':'海南','琼海':'海南','临高县':'海南','东方':'海南','定安县':'海南','乐东':'海南','昌江县':'海南','长垣':'新乡','永城':'商丘','滑县':'安阳','澄迈县':'海南','琼中县':'海南','营口':'大连','韩城':'渭南','陵水县':'海南'}
+city_converter = {'万宁':'海南','琼海':'海南','临高县':'海南','东方':'海南','定安县':'海南','乐东':'海南','昌江县':'海南','澄迈县':'海南','琼中县':'海南','营口':'大连','韩城':'渭南','陵水县':'海南'}
 
 virus_data = get_data()
 provincial_cities = {'上海','北京','天津','重庆'}
 province_data = virus_data['areaTree'][0]['children']
 cities_data = {'海南':{'confirm':0},'拉萨':{'confirm':1}}
 cities_names = set()
+TWN = 0
 get_individual_cities()
 for city in city_converter:
     cities_data[city_converter[city]]['confirm'] += cities_data[city]['confirm']
@@ -76,7 +82,7 @@ m = Basemap(
 
 
 m.readshapefile('/Users/tony/MyWork/Python-Exercise/gadm36_CHN_shp/gadm36_CHN_2', 'states', drawbounds=True)
-
+m.readshapefile('/Users/tony/MyWork/Python-Exercise/gadm36_TWN_shp/gadm36_TWN_0', 'taiwan', drawbounds=True)
 
 color_table = {'megadeep':(0.25,0.0,0.05),'deep':(0.5,0.0,0.15),'shallow':(1,1,0.8),'none':(1,1,1),'medium':(0.75,0.5,0.5)}
 
@@ -116,6 +122,12 @@ for nshape, seg in enumerate(m.states):
     poly = Polygon(seg, facecolor=color, edgecolor=color)
     ax.add_patch(poly)
 
+ax.set_title('2019-nCoV',fontsize = 20)
+
+colors_TWN = cmap(1.1*(np.sqrt((TWN - vmin) / (vmax - vmin))))[:3]
+for nshape, seg in enumerate(m.taiwan):
+    poly = Polygon(seg, facecolor=colors_TWN, edgecolor=color)
+    ax.add_patch(poly)
 
 plt.show()
 
